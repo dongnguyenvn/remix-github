@@ -9,12 +9,11 @@ export const loader : LoaderFunction = async ({params}) => {
 
 
 const Github = () => {
-    const {user : {login,avatar_url,html_url,bio}} = useLoaderData<LoaderData>()
-    console.log(avatar_url)
+    const {user } = useLoaderData<LoaderData>()
     return (
         <div>
-            <p>{login}</p>
-            <img src={avatar_url} alt="dong" />
+            <p>{user.login}</p>
+            <img src={user.avatar_url} alt="dong" />
         </div>
     )
 }
