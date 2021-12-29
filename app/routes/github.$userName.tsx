@@ -1,21 +1,18 @@
-import { LoaderFunction, useLoaderData } from "remix";
-import { getGithubUser } from "~/features/github/api";
-import { LoaderData, User } from "~/features/github/types";
+import { LoaderFunction, useLoaderData } from 'remix'
+import { Repositories } from '~/features/github/components/Repositories'
+import { Types } from '../features/github'
+import { Apis } from '../features/github'
 
-export const loader : LoaderFunction = async ({params}) => {
-    return await getGithubUser(params.userName)
+export const loader: LoaderFunction = async ({ params }) => {
+  return {
+    user: await Apis.getGithubUser(params.userName),
+    repos: await Apis.getUserRepo(params.userName),
+  }
 }
 
-
-
 const Github = () => {
-    const {user } = useLoaderData<LoaderData>()
-    return (
-        <div>
-            <p>{user.login}</p>
-            <img src={user.avatar_url} alt="dong" />
-        </div>
-    )
+  const { user, repos } = useLoaderData<Types.Repositories.LoaderData>()
+  return <Repositories user={user} repos={repos} />
 }
 
 export default Github
