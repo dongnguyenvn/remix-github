@@ -13,9 +13,9 @@ export function ErrorBoundary() {
   return <h3>Whoops. Something went wrong [Commits]</h3>
 }
 
-const R = () => {
+const RepoName = () => {
   const { commits, user } = useLoaderData<Types.Commits.LoaderData>()
   return <Commits commits={commits} user={user} />
 }
 
-export default R
+export default RepoName
