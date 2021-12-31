@@ -10,7 +10,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 }
 
 export function ErrorBoundary() {
-  return <h3>Whoops. Something went wrong [Commits]</h3>
+  return <h3>Whoops. Something went wrong</h3>
 }
 
 const RepoName = () => {
